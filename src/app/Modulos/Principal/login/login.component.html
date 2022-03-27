@@ -1,0 +1,44 @@
+<div class="login-form">
+    <div class="form-area">
+       
+      <form [formGroup]="form" (ngSubmit)="login($event)">
+       
+        <mat-card>
+          <mat-card-header style="text-align: center;">
+          <img style="margin: auto !important;" src="{{Icon}}" width="128px">
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-xs">
+            
+                <mat-form-field appearance="outline">
+                  <mat-label>Correo</mat-label>
+                  <input formControlName="email" matInput type="email">
+                  <mat-icon matSuffix>mail</mat-icon>
+                 
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs">
+                <mat-form-field appearance="outline">
+                  <mat-label>Contraseña</mat-label>
+                  <input formControlName="password" matInput type="password">
+                  <mat-icon matSuffix>vpn_key</mat-icon>
+                 
+                </mat-form-field>
+              </div>
+            </div>
+       
+          </mat-card-content>
+          <mat-card-actions>
+            <br><br>
+            <button color="primary" [disabled]="form.invalid" mat-raised-button type="submit">Ingresar</button>
+          </mat-card-actions>
+        </mat-card>
+        <br><br>
+      </form>
+    </div>
+</div>
+
+

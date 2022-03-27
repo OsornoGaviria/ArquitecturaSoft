@@ -1,0 +1,48 @@
+<div class="container">
+   <div class="table-condutores">
+    <table mat-table [dataSource]="conductores" class="mat-elevation-z8 table-ang table-with">
+        
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> <strong>Nombre</strong> </th>
+            <td mat-cell *matCellDef="let conductor"> {{conductor.NombreConductor}} </td>
+        </ng-container>
+        <ng-container matColumnDef="telefono">
+            <th mat-header-cell *matHeaderCellDef> <strong>Telefono</strong> </th>
+            <td mat-cell *matCellDef="let conductor"> {{conductor.TelefonoConductor}} </td>
+        </ng-container>
+        <ng-container matColumnDef="correo">
+            <th mat-header-cell *matHeaderCellDef> <strong>Correo</strong> </th>
+            <td mat-cell *matCellDef="let conductor"> {{conductor.CorreoConductor}} </td>
+        </ng-container>
+        <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> <strong>Estado</strong> </th>
+            <td mat-cell *matCellDef="let conductor"> 
+                <mat-chip-list aria-label="Fish selection">
+                    <mat-chip    *ngIf="conductor.EstadoConductor==1">Activo</mat-chip>
+                    <mat-chip color="warn" selected  *ngIf="conductor.EstadoConductor==3">Suspendido</mat-chip>
+                    <mat-chip  color="accent"  selected *ngIf="conductor.EstadoConductor==4">En registro</mat-chip>
+                    <mat-chip  color="primary" selected *ngIf="conductor.EstadoConductor==5">Por Activar</mat-chip>
+                 
+                  </mat-chip-list>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="options">
+            <th mat-header-cell *matHeaderCellDef> <strong></strong> </th>
+            <td mat-cell *matCellDef="let conductor"> 
+                <button [routerLink]="['/admin/detallec', conductor.idConductor]" mat-icon-button color="primary" aria-label="Example icon button with a heart icon">
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+                  <button  mat-icon-button aria-label="Example icon button with a heart icon">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button (click)="Delete(conductor.idConductor)"   mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                  
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    </div>
+</div>

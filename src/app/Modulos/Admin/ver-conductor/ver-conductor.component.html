@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="data-conductor" *ngIf="info!=undefined">
+        <div class="example-card">
+                <img mat-card-xl-image src="{{info.ImagenConductor}}" >
+        </div>
+        <br>
+        <mat-card >
+            <mat-list>
+                <div style="margin: auto;" mat-subheader>Información Personal</div>
+                <mat-list-item >
+                  <mat-icon mat-list-icon>person</mat-icon>
+                  <div mat-line><b>Nombre</b> {{info.NombreConductor}}</div>
+                </mat-list-item>
+                <mat-list-item >
+                    <mat-icon mat-list-icon>mail</mat-icon>
+                    <div mat-line><b>Correo</b> {{info.CorreoConductor}}</div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>phone</mat-icon>
+                    <div mat-line><b>Telefono</b> {{info.TelefonoConductor}}</div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>check_circle_outline</mat-icon>
+                    <div mat-line>
+                     <p *ngIf="info.EstadoConductor==1"> <b>Estado</b> Activo</p>
+                     <p *ngIf="info.EstadoConductor==3"> <b>Estado</b> Suspendido</p>
+                     <p *ngIf="info.EstadoConductor==4"> <b>Estado</b> En registro</p>
+                     <p *ngIf="info.EstadoConductor==5"> <b>Estado</b> Por Activar</p>
+                    </div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>trending_flat</mat-icon>
+                    <div mat-line><b>Viajes</b> {{info.ViajesConductor}}</div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>stars</mat-icon>
+                    <div mat-line><b>Calificación</b> {{info.PromedioConductor}}
+                    </div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>credit_card</mat-icon>
+                    <div mat-line><b>Saldo</b> ${{info.Saldo | number}}</div>
+                  </mat-list-item>
+              </mat-list>
+        </mat-card>
+
+        <br>
+        <mat-card >
+            <mat-list>
+                <div style="margin: auto;" mat-subheader>Información Vehiculo</div>
+                <mat-list-item >
+                  <mat-icon mat-list-icon>directions_car</mat-icon>
+                  <div mat-line><b>Marca</b> {{info.Marca}}</div>
+                </mat-list-item>
+                <mat-list-item >
+                    <mat-icon mat-list-icon>directions_car</mat-icon>
+                    <div mat-line><b>Referencia</b> {{info.Referencia}}</div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>directions_car</mat-icon>
+                    <div mat-line><b>Modelo</b> {{info.Modelo}}</div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>directions_car</mat-icon>
+                    <div mat-line>
+                            <b>Placa</b> {{info.Placa}}
+                    </div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>directions_car</mat-icon>
+                    <div mat-line><b>Color</b> {{info.Color}}</div>
+                  </mat-list-item>
+              </mat-list>
+        </mat-card>
+        <br>
+        <mat-card >
+            <mat-list>
+                <div style="margin: auto;" mat-subheader>Documentos</div>
+                <mat-list-item >
+                  <mat-icon mat-list-icon>broken_image</mat-icon>
+                  <div mat-line><b>Foto Perfil</b></div>
+                </mat-list-item>
+                <mat-list-item >
+                    <mat-icon mat-list-icon>broken_image</mat-icon>
+                    <div mat-line >
+                      <a href="{{info.FotoMatricula}}" target="blank">
+                        <b>Matricula</b>
+                      </a>
+                    </div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>broken_image</mat-icon>
+                    <div mat-line> <a href="{{info.FotoLicencia}}" target="blank">
+                      <b>Licencia Conducción</b>
+                    </a></div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>broken_image</mat-icon>
+                    <div mat-line>
+                      <a href="{{info.FotoSoat}}" target="blank">
+                        <b>Soat</b>
+                      </a>
+                    </div>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-icon mat-list-icon>broken_image</mat-icon>
+                    <div mat-line>
+                      <a href="{{info.FotoVehiculo}}" target="blank">
+                        <b>Vehiculo</b>
+                      </a>
+                    </div>
+                  </mat-list-item>
+              </mat-list>
+              <button *ngIf="info.EstadoConductor==5" (click)="activar(info.idConductor)" mat-raised-button color="primary">Activar Conductor</button>  
+              <button *ngIf="info.idConductor!=5" disabled (click)="activar(info.idConductor)" mat-raised-button color="primary">Activar Conductor</button>  
+        </mat-card>
+    </div>
+</div>

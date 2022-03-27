@@ -1,0 +1,56 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar >Menu</mat-toolbar>
+    <mat-nav-list >
+      <mat-list-item routerLink="cpanel">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <div mat-line> Inicio </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="conductores">
+        <mat-icon mat-list-icon>local_taxi</mat-icon>
+        <div mat-line> Conductores </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="usuarios">
+        <mat-icon mat-list-icon>accessibility</mat-icon>
+        <div mat-line> Usuarios </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="solicitudes">
+        <mat-icon mat-list-icon>list</mat-icon>
+        <div mat-line> Solicitudes </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="solicitudes">
+        <mat-icon mat-list-icon>settings</mat-icon>
+        <div mat-line> Configuración </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="solicitudes">
+        <mat-icon mat-list-icon>close</mat-icon>
+        <div mat-line> Cerrar Sesión </div>
+      </mat-list-item>
+
+     
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Dashboard</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
